@@ -73,20 +73,14 @@ describe('Teste o componente Pokedex', () => {
         <Pokedex isPokemonFavoriteById={ pokemons[0] } pokemons={ pokemons } />
       </MemoryRouter>,
     );
-    const buttonElectric = screen.getByRole('button', { name: /Electric/i });
-    expect(buttonElectric).toBeInTheDocument();
-    const buttonFire = screen.getByRole('button', { name: /Fire/i });
-    expect(buttonFire).toBeInTheDocument();
-    const buttonBug = screen.getByRole('button', { name: /Bug/i });
-    expect(buttonBug).toBeInTheDocument();
-    const buttonPoison = screen.getByRole('button', { name: /Poison/i });
-    expect(buttonPoison).toBeInTheDocument();
-    const buttonPsychic = screen.getByRole('button', { name: /Psychic/i });
-    expect(buttonPsychic).toBeInTheDocument();
-    const buttonNormal = screen.getByRole('button', { name: /Normal/i });
-    expect(buttonNormal).toBeInTheDocument();
-    const buttonDragon = screen.getByRole('button', { name: /Dragon/i });
-    expect(buttonDragon).toBeInTheDocument();
+    const buttonAll = screen.getAllByTestId('pokemon-type-button');
+    expect(buttonAll[0]).toBeInTheDocument();
+    expect(buttonAll[1]).toBeInTheDocument();
+    expect(buttonAll[2]).toBeInTheDocument();
+    expect(buttonAll[3]).toBeInTheDocument();
+    expect(buttonAll[4]).toBeInTheDocument();
+    expect(buttonAll[5]).toBeInTheDocument();
+    expect(buttonAll[6]).toBeInTheDocument();
   });
 
   test('Testa se o botão All precisa está visível', () => {

@@ -73,14 +73,15 @@ describe('Teste o componente Pokedex', () => {
         <Pokedex isPokemonFavoriteById={ pokemons[0] } pokemons={ pokemons } />
       </MemoryRouter>,
     );
+    const typePokemon = [
+      'Electric', 'Fire', 'Bug', 'Poison', 'Psychic', 'Normal', 'Dragon'];
     const buttonAll = screen.getAllByTestId('pokemon-type-button');
-    expect(buttonAll[0]).toBeInTheDocument();
-    expect(buttonAll[1]).toBeInTheDocument();
-    expect(buttonAll[2]).toBeInTheDocument();
-    expect(buttonAll[3]).toBeInTheDocument();
-    expect(buttonAll[4]).toBeInTheDocument();
-    expect(buttonAll[5]).toBeInTheDocument();
-    expect(buttonAll[6]).toBeInTheDocument();
+    for (let i = 0; i < buttonAll.length; i += 1) {
+      expect(buttonAll[i]).toBeInTheDocument();
+      const type = screen.getAllByText(typePokemon[i]);
+      userEvent.click(buttonAll[i]);
+      expect(type[0]).toBeInTheDocument();
+    }
   });
 
   test('Testa se o botão All precisa está visível', () => {
@@ -90,6 +91,7 @@ describe('Teste o componente Pokedex', () => {
       </MemoryRouter>,
     );
     const buttonAll = screen.getByRole('button', { name: /All/i });
+    userEvent.click(buttonAll);
     expect(buttonAll).toBeInTheDocument();
   });
 });
